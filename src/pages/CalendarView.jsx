@@ -9,6 +9,7 @@ import {
   onSnapshot
 } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 // Helper functions for styling (can be centralized in a utilities file)
 const getPriorityColorBadge = (priority) => {
@@ -41,7 +42,7 @@ const CalendarView = () => {
         setTasks(allTasks);
         setLoading(false);
       }, (error) => {
-        console.error("Firestore error fetching tasks:", error.message);
+        console.error("❌ Firestore error fetching tasks:", error.message);
         setLoading(false);
       });
 
@@ -51,7 +52,14 @@ const CalendarView = () => {
     return () => unsubscribeAuth();
   }, [navigate]);
 
-
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   const formatDateForComparison = (date) => {
     return date.toISOString().split('T')[0];

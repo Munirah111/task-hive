@@ -72,12 +72,11 @@ const SignUp = () => {
         setPassword(newPassword);
 
         // Update password strength feedback
-      setPasswordLength(newPassword.length >= 8); // ✅ At least 8 characters
-      setPasswordLowercase(/[a-z]/.test(newPassword)); // ✅ lowercase letter
-      setPasswordUppercase(/[A-Z]/.test(newPassword)); // ✅ uppercase letter
-      setPasswordNumber(/[0-9]/.test(newPassword));    // ✅ number
-      setPasswordSpecialChar(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]/.test(password)); // ✅ special char
-
+        setPasswordLength(newPassword.length >= 8); // At least 8 characters
+        setPasswordLowercase(/[a-z]/.test(newPassword));
+        setPasswordUppercase(/[A-Z]/.test(newPassword));
+        setPasswordNumber(/[0-9]/.test(newPassword));
+        setPasswordSpecialChar(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(newPassword));
     };
 
     const isPasswordStrong = passwordLength && passwordLowercase && passwordUppercase && passwordNumber && passwordSpecialChar;

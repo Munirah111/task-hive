@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { sendPasswordResetEmail } from 'firebase/auth'; // Import sendPasswordResetEmail
-import { auth} from '../firebase';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth'; // Import sendPasswordResetEmail
+import { auth, db } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
@@ -17,6 +18,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       // const uid = userCredential.user.uid; // Not directly used after login, but kept if you need it later
       // const userDoc = await getDoc(doc(db, 'users', uid)); // Not directly used after login, but kept if you need it later
       // const userData = userDoc.data(); // Not directly used after login, but kept if you need it later

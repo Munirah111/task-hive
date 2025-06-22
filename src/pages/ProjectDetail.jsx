@@ -49,7 +49,7 @@ const ProjectHeader = ({ roomTitle, onBack }) => {
 const ProjectDetail = () => {
   const navigate = useNavigate();
   const { roomId, projectId } = useParams();
-  const [setUserRole] = useState(''); // This is the user's *global* role from /users collection
+  const [userRole, setUserRole] = useState(''); // This is the user's *global* role from /users collection
 
   const [hasAccess, setHasAccess] = useState(false);
   const [accessChecked, setAccessChecked] = useState(false);
@@ -67,7 +67,7 @@ const ProjectDetail = () => {
   });
   const [comments, setComments] = useState({});
   const [currentUser, setCurrentUser] = useState(null); // The current authenticated user's email
-  const [setRoomCreator] = useState(''); // This might still be useful for other room-level logic
+  const [roomCreator, setRoomCreator] = useState(''); // This might still be useful for other room-level logic
   const [notification, setNotification] = useState({ message: '', type: '' });
   const [displayedAssignedTo, setDisplayedAssignedTo] = useState({});
   const [displayedStatus, setDisplayedStatus] = useState({});
@@ -158,14 +158,16 @@ const ProjectDetail = () => {
         return;
       }
 
-      
+      const now = new Date();
       const taskList = [];
       const initialAssignedToMap = {};
       const initialStatusMap = {};
 
       for (const docSnap of taskSnap.docs) {
         const task = { id: docSnap.id, ...docSnap.data() };
-       
+        const dueDate = task.dueDate ? new Date(task.dueDate) : null;
+        const daysLeft = dueDate ? (dueDate - now) / (1000 * 60 * 60 * 24) : null;
+
         // Removed email sending logic for due reminders
         
         taskList.push(task);
