@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { db, auth } from '../firebase';
 import { collectionGroup, query, where, onSnapshot } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth'; // Import signOut
+ 
 
 // Helper functions for styling (can be centralized if used across multiple components)
 const getStatusColor = (status) => {
@@ -71,15 +71,6 @@ const MyTasks = () => {
     return () => unsubscribeAuth();
   }, [navigate]);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate('/login');
-    } catch (error) {
-      console.error('Error logging out:', error);
-      // Implement a user-facing notification for logout failure
-    }
-  };
 
   // Loading spinner and message
   if (loading) {

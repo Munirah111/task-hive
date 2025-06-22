@@ -8,8 +8,7 @@ import {
     collection,
     addDoc,
     getDocs,
-    Timestamp,
-    arrayRemove,
+    Timestamp
 } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 

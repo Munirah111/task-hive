@@ -41,7 +41,7 @@ const TaskBoard = () => {
   const [overdueCount, setOverdueCount] = useState(0);
   const [currentUserEmail, setCurrentUserEmail] = useState('');
   const [currentUserName, setCurrentUserName] = useState('Guest');
-  const [userRole, setUserRole] = useState('member'); // Initialize with a default role
+  const [setUserRole] = useState('member'); // Initialize with a default role
   const [loading, setLoading] = useState(true); // Add loading state
 
   // State for email reminder modal
