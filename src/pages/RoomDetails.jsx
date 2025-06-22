@@ -329,7 +329,7 @@ const RoomDetails = () => {
 
     const handleViewProjectTasks = (project) => {
         const isCreator = project.creatorEmail === currentUserEmail;
-        const isLeader = project.role === 'leader' && isCreator; // Creator is leader of their project
+    
         
         // Check if current user is an approved member of this project
         const isApprovedMember = project.members && project.members.some(

@@ -158,7 +158,7 @@ const ProjectDetail = () => {
         return;
       }
 
-      const now = new Date();
+      
       const taskList = [];
       const initialAssignedToMap = {};
       const initialStatusMap = {};
