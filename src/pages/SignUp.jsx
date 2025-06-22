@@ -76,7 +76,7 @@ const SignUp = () => {
       setPasswordLowercase(/[a-z]/.test(newPassword)); // ✅ lowercase letter
       setPasswordUppercase(/[A-Z]/.test(newPassword)); // ✅ uppercase letter
       setPasswordNumber(/[0-9]/.test(newPassword));    // ✅ number
-      setPasswordSpecialChar(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(newPassword)); // ✅ special char
+      setPasswordSpecialChar(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]/.test(password)); // ✅ special char
 
     };
 

@@ -111,17 +111,25 @@ const TaskBoard = () => {
             const completedTasks = tasks.filter(t => t.status === 'Completed' || t.status === 'Done').length;
             const percentComplete = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
 
-            tasks.forEach(task => {
-              const due = task.dueDate ? new Date(task.dueDate) : null;
-              const today = new Date();
-              // Check if task is overdue only if it's not completed
-              if (task.status !== 'Completed' && task.status !== 'Done' && due && due < today) {
-                overdue++;
-              }
-              if (task.updatedAt && typeof task.updatedAt.toDate === 'function') {
-                activities.push({ ...task, project: projectData.title, time: task.updatedAt.toDate() });
-              }
-            });
+            let overdue = 0;
+let newActivities = [];
+
+tasks.forEach(task => {
+  const due = task.dueDate ? new Date(task.dueDate) : null;
+  const today = new Date();
+
+  if (task.status !== 'Completed' && task.status !== 'Done' && due && due < today) {
+    overdue += 1;
+  }
+
+  if (task.updatedAt && typeof task.updatedAt.toDate === 'function') {
+    newActivities.push({ ...task, project: projectData.title, time: task.updatedAt.toDate() });
+  }
+});
+
+setOverdueCount(overdue);
+setLatestActivities(newActivities.sort((a, b) => b.time - a.time).slice(0, 5));
+
 
             allProjects.push({
               roomId,

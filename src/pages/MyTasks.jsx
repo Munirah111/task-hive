@@ -69,7 +69,7 @@ const MyTasks = () => {
     });
 
     return () => unsubscribeAuth();
-  }, [navigate]);
+  }, [navigate, setTasks, setLoading]);
 
 
   // Loading spinner and message
