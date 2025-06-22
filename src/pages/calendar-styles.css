@@ -1,0 +1,87 @@
+/* src/pages/calendar-styles.css */
+
+/* Base calendar container styling */
+.react-calendar {
+  @apply bg-white rounded-2xl shadow-xl border border-gray-200 p-4 w-full;
+  /* Override default max-width if it's restricting your layout */
+  max-width: none !important;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Ensure consistent font */
+}
+
+/* Navigation (Month/Year buttons) */
+.react-calendar__navigation {
+  @apply flex justify-around mb-4; /* Distribute buttons */
+}
+
+.react-calendar__navigation__label {
+    @apply font-bold text-lg text-gray-800; /* Style for month/year label */
+}
+
+.react-calendar__navigation button {
+  @apply bg-purple-100 text-purple-700 hover:bg-purple-200 rounded-md px-3 py-1 font-semibold transition duration-200;
+  min-width: 60px; /* Ensure buttons have a minimum size */
+}
+
+.react-calendar__navigation button:disabled {
+    @apply bg-gray-100 text-gray-400 cursor-not-allowed;
+}
+
+/* Weekday headers (Mon, Tue, Wed...) */
+.react-calendar__month-view__weekdays {
+  @apply flex border-b border-gray-200 pb-2 mb-2; /* Bottom border for separation */
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  @apply text-gray-600 font-semibold uppercase text-sm text-center flex-1; /* Centered, bold, uppercase */
+}
+
+/* Day grid */
+.react-calendar__month-view__days {
+  @apply grid grid-cols-7 gap-1; /* Grid layout for days */
+}
+
+/* Individual day tiles */
+.react-calendar__tile {
+  @apply rounded-md transition duration-150 ease-in-out flex flex-col items-center justify-center h-16 relative; /* Increased height for better spacing */
+  overflow: hidden; /* Hide overflow from dots if they're too large */
+}
+
+.react-calendar__tile:hover {
+  @apply bg-gray-100 cursor-pointer;
+}
+
+/* Specific styling for today's date */
+.react-calendar__tile--today-fancy {
+  @apply bg-purple-200 font-bold rounded-md;
+}
+
+/* Styling for weekends */
+.react-calendar__tile--weekend-fancy {
+  @apply text-indigo-500; /* Slightly different text color for weekends */
+}
+
+/* Styling for days with tasks (subtle background) */
+.react-calendar__tile--has-tasks-fancy {
+  @apply bg-purple-50; /* Very light purple background */
+}
+
+
+/* Styling for the selected date */
+.react-calendar__tile--active {
+  @apply bg-purple-500 text-white font-bold rounded-md shadow-md;
+}
+
+/* Disabled tiles (e.g., dates outside current month view) */
+.react-calendar__tile:disabled {
+  @apply bg-gray-100 text-gray-400 cursor-not-allowed rounded-md;
+}
+
+/* Content within the tile (the colored dots) */
+.react-calendar__tile__content {
+  @apply flex justify-center items-end h-full pb-1; /* Position dots at the bottom */
+}
+
+/* Wrapper div for overall calendar styling (if you want an outer box shadow/border) */
+.react-calendar-wrapper {
+  @apply bg-white rounded-2xl shadow-xl border border-gray-200 p-6 w-full;
+}

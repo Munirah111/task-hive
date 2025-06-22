@@ -1,0 +1,27 @@
+.dashboard-container {
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #111827, #1f2937);
+  color: #f9fafb;
+  min-height: 100vh;
+}
+
+.room-card {
+  background-color: #1e293b;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.room-card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.member-tag {
+  background-color: #334155;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+  display: inline-block;
+}
